@@ -2,9 +2,9 @@ import * as React from "react";
 import * as ReactDOM from "react-dom/client";
 import { createBrowserRouter, RouterProvider } from "react-router-dom";
 import "./index.css";
-import RootLayout from "./components/RootLayout";
 import TrackerTool from "./tracker-tool";
 import { createTheme, ThemeProvider } from "@mui/material";
+import App from "./App";
 
 const theme = createTheme({
   breakpoints: {
@@ -23,7 +23,7 @@ const theme = createTheme({
 const router = createBrowserRouter([
   {
     path: "/",
-    element: <RootLayout />,
+    element: <App />,
     children: [
       {
         path: "tracker-tool",

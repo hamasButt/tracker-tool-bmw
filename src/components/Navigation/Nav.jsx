@@ -1,6 +1,7 @@
 import { Box, Typography, useMediaQuery } from "@mui/material";
 import ToggleViews from "./ToggleViews";
 import { useTheme } from "@mui/material/styles";
+import Image from "../ReuseableComps/Image";
 
 const Nav = () => {
   const theme = useTheme();
@@ -15,6 +16,9 @@ const Nav = () => {
             display: "flex",
             justifyContent: "space-between",
             alignItems: "center",
+            p: "20px",
+            position: "sticky",
+            top: "0",
           }}
         >
           <svg
@@ -43,7 +47,7 @@ const Nav = () => {
               strokeLinecap="round"
             />
           </svg>
-          <img src="/images/bmw-logo.png" alt="" width={50} height={50} />
+          <Image width={50} height={50} src="/images/bmw-logo.png" />
         </Box>
       ) : (
         <Box
@@ -63,7 +67,7 @@ const Nav = () => {
             },
           }}
         >
-          <img src="/images/bmw-logo.png" />
+          <Image width={50} height={50} src="/images/bmw-logo.png" />
           <Box
             component={"div"}
             sx={{

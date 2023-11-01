@@ -1,4 +1,5 @@
 import { Box, Typography } from "@mui/material";
+import Image from "./ReuseableComps/Image";
 
 const Footer = () => {
   return (
@@ -13,7 +14,6 @@ const Footer = () => {
         flexDirection: "column",
         alignItems: "center",
         justifyContent: "center",
-
         color: "white",
         gap: {
           laptop: "10px",
@@ -36,7 +36,7 @@ const Footer = () => {
         >
           Powered by
         </Typography>
-        <img src="/images/footer-logo.png" />
+        <Image src="/images/footer-logo.png" />
       </div>
     </Box>
   );
