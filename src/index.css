@@ -94,7 +94,6 @@ body {
 
 .dropdown {
     position: relative;
-    z-index: 20;
     margin-bottom: 10px;
     width: 100%;
 }

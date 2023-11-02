@@ -1,7 +1,14 @@
 import { Box, Button, Divider, Stack, styled } from "@mui/material";
 import React from "react";
 
-const Dropdown = ({ isOpen, setIsOpen, title, children, border = true }) => {
+const Dropdown = ({
+  isOpen,
+  zIndex = "15",
+  setIsOpen,
+  title,
+  children,
+  border = true,
+}) => {
   const toggleDropdown = () => {
     setIsOpen(!isOpen);
   };
@@ -24,6 +31,7 @@ const Dropdown = ({ isOpen, setIsOpen, title, children, border = true }) => {
     <Box
       variant="div"
       sx={{
+        zIndex: { zIndex },
         border: !border
           ? ""
           : "1px solid var(--bmw-blue-bmw-blue-200, #8AB9DB)",

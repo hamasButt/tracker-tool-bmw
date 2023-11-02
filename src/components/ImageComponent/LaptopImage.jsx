@@ -33,7 +33,7 @@ const LaptopImage = () => {
         position: "relative",
       }}
     >
-      <Image src="/images/mobile-img.png" />
+      <Image customStyles={{objectFit:'fit',height:'528px'}} src="/images/mobile-img.png" />
       <div
         style={{
           display: "flex",

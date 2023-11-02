@@ -382,11 +382,20 @@ const TrackerTool = () => {
             display: {
               mobile: "flex",
             },
+            maxHeight: {
+              laptop: "528px",
+              mobile: "388px",
+            },
+            minHeight: {
+              laptop: "528px",
+              mobile: "388px",
+            },
             flexDirection: {
               mobile: "column",
             },
             gap: {
               mobile: "20px",
+              laptop: "40px",
             },
           }}
         >
@@ -409,7 +418,10 @@ const TrackerTool = () => {
               <Typography
                 sx={{
                   color: "#000",
-                  fontSize: "14px",
+                  fontSize: {
+                    mobile: "14px",
+                    laptop: "18px",
+                  },
                   fontStyle: "normal",
                   fontWeight: "700",
                   letterSpacing: "0.28px",
@@ -421,7 +433,10 @@ const TrackerTool = () => {
               <Typography
                 sx={{
                   color: "#4A4848",
-                  fontSize: "11px",
+                  fontSize: {
+                    mobile: "11px",
+                    laptop: "14px",
+                  },
                   fontStyle: "normal",
                   fontWeight: "400",
                   lineHeight: " 120%" /* 13.2px */,
@@ -452,6 +467,7 @@ const TrackerTool = () => {
                 color: "#000",
                 fontSize: {
                   mobile: "20px",
+                  laptop: "30px",
                 },
                 fontStyle: "normal",
                 fontWeight: "400",
@@ -466,6 +482,7 @@ const TrackerTool = () => {
                 color: "#4A4848",
                 fontSize: {
                   mobile: "12px",
+                  laptop: "16px",
                 },
                 fontStyle: "normal",
                 fontWeight: "400",
@@ -616,6 +633,7 @@ const TrackerTool = () => {
             <DropDown
               title={"Proof of Authenticity"}
               isOpen={open.first}
+              zIndex="16"
               setIsOpen={(val) => handleOpen("first", val)}
             >
               <Box
@@ -837,9 +855,9 @@ const TrackerTool = () => {
                   </TableRow>
                 </TableHead>
                 <TableBody>
-                  {rows.map((row) => (
+                  {rows.map((row, id) => (
                     <TableRow
-                      key={row.name}
+                      key={id}
                       sx={{
                         "&.MuiTableRow-root": {
                           background: "#F4F4F4",
