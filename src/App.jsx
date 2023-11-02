@@ -1,12 +1,18 @@
-import { Outlet } from "react-router-dom";
+import { Navigate, Outlet, useLocation, useNavigate } from "react-router-dom";
 import Nav from "./components/Navigation/Nav";
 import { Container } from "@mui/material";
 import Footer from "./components/Footer";
 import CustomLoader from "./components/ReuseableComps/Loader";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 function App() {
+  const router = useLocation();
+  const Navigate = useNavigate();
   const [loader, setLoader] = useState(false);
-
+  useEffect(() => {
+    if (router.pathname === "/") {
+      Navigate("/search-tracking");
+    }
+  }, [router.pathname]);
   return (
     <>
       <Nav />
