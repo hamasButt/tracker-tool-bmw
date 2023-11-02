@@ -32,6 +32,7 @@ const TrackerTool = () => {
   const theme = useTheme();
   const matches = useMediaQuery(theme.breakpoints.up("laptop"));
   const [cardId, setCardId] = useState(0);
+  const [cardId1, setCardId1] = useState(0);
   const [open, setOpen] = useState({
     first: false,
     second: true,
@@ -699,10 +700,10 @@ const TrackerTool = () => {
       </Grid>
       <Grid item laptop={12} mobile={12}>
         <TrackerDetailsDropdown
-          cardId={cardId}
+          cardId={cardId1}
           isOpen={open.third}
           setIsOpen={(val) => handleOpen("third", val)}
-          setCardId={setCardId}
+          setCardId={setCardId1}
           carArray={tableCardValues}
         />
       </Grid>
