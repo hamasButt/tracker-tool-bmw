@@ -1,12 +1,24 @@
-import { Box, Divider, keyframes } from "@mui/material";
-import React, { useState } from "react";
+import { Box, Button, Divider, Stack, styled } from "@mui/material";
+import React from "react";
 
-const Dropdown = ({ title, children, border = true }) => {
-  const [isOpen, setIsOpen] = useState(false);
-
+const Dropdown = ({ isOpen, setIsOpen, title, children, border = true }) => {
   const toggleDropdown = () => {
     setIsOpen(!isOpen);
   };
+  const HistoryButton = styled(Button)({
+    boxShadow: "none",
+    textTransform: "none",
+    fontSize: 16,
+    color: "#4B4949",
+    padding: "6px 12px",
+    border: "1px solid #4B4949",
+    lineHeight: 1.5,
+    borderColor: "#4B4949",
+    "&:hover": {
+      backgroundColor: "transparent",
+      borderColor: "#4B4949",
+    },
+  });
 
   return (
     <Box
@@ -18,36 +30,69 @@ const Dropdown = ({ title, children, border = true }) => {
       }}
       className={`dropdown `}
     >
-      <Box
-        variant="div"
-        sx={{
-          fontSize: {
-            mobile: "14px",
-            laptop: "18px",
-          },
-          color: "#000",
-        }}
-        className="dropdown-header"
-        onClick={toggleDropdown}
-      >
-        {title}
-        <svg
-          className={`chevron ${!isOpen ? "open" : ""}`}
-          width="18"
-          height="18"
-          viewBox="0 0 18 18"
-          fill="none"
-          xmlns="http://www.w3.org/2000/svg"
+      {!title ? (
+        <Box variant="div" className="dropdown-header" onClick={toggleDropdown}>
+          <Stack>
+            <HistoryButton
+              sx={{
+                fontSize: "14px",
+                padding: "10px 20px",
+              }}
+              variant="outlined"
+            >
+              History 1
+            </HistoryButton>
+          </Stack>
+
+          <svg
+            className={`chevron ${!isOpen ? "open" : ""}`}
+            width="18"
+            height="18"
+            viewBox="0 0 18 18"
+            fill="none"
+            xmlns="http://www.w3.org/2000/svg"
+          >
+            <path
+              d="M3.05994 11.2871L7.94994 6.39711C8.52744 5.81961 9.47244 5.81961 10.0499 6.39711L14.9399 11.2871"
+              stroke="#0E1112"
+              strokeWidth="1.5"
+              strokeLinecap="round"
+              strokeLinejoin="round"
+            />
+          </svg>
+        </Box>
+      ) : (
+        <Box
+          variant="div"
+          sx={{
+            fontSize: {
+              mobile: "14px",
+              laptop: "18px",
+            },
+            color: "#000",
+          }}
+          className="dropdown-header"
+          onClick={toggleDropdown}
         >
-          <path
-            d="M3.05994 11.2871L7.94994 6.39711C8.52744 5.81961 9.47244 5.81961 10.0499 6.39711L14.9399 11.2871"
-            stroke="#0E1112"
-            strokeWidth="1.5"
-            strokeLinecap="round"
-            strokeLinejoin="round"
-          />
-        </svg>
-      </Box>
+          {title}
+          <svg
+            className={`chevron ${!isOpen ? "open" : ""}`}
+            width="18"
+            height="18"
+            viewBox="0 0 18 18"
+            fill="none"
+            xmlns="http://www.w3.org/2000/svg"
+          >
+            <path
+              d="M3.05994 11.2871L7.94994 6.39711C8.52744 5.81961 9.47244 5.81961 10.0499 6.39711L14.9399 11.2871"
+              stroke="#0E1112"
+              strokeWidth="1.5"
+              strokeLinecap="round"
+              strokeLinejoin="round"
+            />
+          </svg>
+        </Box>
+      )}
       {isOpen && (
         <Box
           variant="div"

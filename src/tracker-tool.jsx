@@ -26,11 +26,20 @@ import DropDown from "./components/ReuseableComps/DropDown";
 import { Fragment, useState } from "react";
 import PaginationCustom from "./components/ReuseableComps/Pagination";
 import TableCard from "./components/Card/TableCard";
+import TrackerDetailsDropdown from "./components/ReuseableComps/TrackerDetailsDropdown";
 
 const TrackerTool = () => {
   const theme = useTheme();
   const matches = useMediaQuery(theme.breakpoints.up("laptop"));
   const [cardId, setCardId] = useState(0);
+  const [open, setOpen] = useState({
+    first: false,
+    second: true,
+    third: true,
+  });
+  function handleOpen(name, value) {
+    setOpen((pre) => ({ ...pre, [name]: value }));
+  }
   function createData(event, svg, img, price, from, to, date) {
     return { event, svg, img, price, from, to, date };
   }
@@ -604,7 +613,11 @@ const TrackerTool = () => {
             </Button>
           </Box>
           <Box variant="div" sx={{ width: "100%" }}>
-            <DropDown title={"Proof of Authenticity"}>
+            <DropDown
+              title={"Proof of Authenticity"}
+              isOpen={open.first}
+              setIsOpen={(val) => handleOpen("first", val)}
+            >
               <Box
                 variant="div"
                 sx={{
@@ -657,152 +670,23 @@ const TrackerTool = () => {
         </Box>
       </Grid>
       <Grid item laptop={12} mobile={12}>
-        <DropDown title="Attribute" border={false}>
-          <Box
-            variant="div"
-            sx={{
-              display: "flex",
-              flexDirection: "column",
-              gap: "20px",
-              py: {
-                mobile: "20px",
-              },
-            }}
-          >
-            <Box
-              variant="div"
-              sx={{
-                display: "flex",
-                justifyContent: "space-between",
-                alignItems: {
-                  mobile: "start",
-                  laptop: "center",
-                },
-                maxWidth: {
-                  mobile: "100%",
-                  laptop: "582px",
-                },
-              }}
-            >
-              <Box
-                variant="div"
-                sx={{
-                  display: "flex",
-                  flexDirection: {
-                    mobile: "column",
-                    laptop: "row",
-                  },
-                  alignItems: {
-                    mobile: "start",
-                    laptop: "center",
-                  },
-                  gap: {
-                    mobile: "10px",
-                  },
-                }}
-              >
-                <Typography
-                  sx={{
-                    color: "#4A4848",
-                    fontSize: { mobile: "10px", laptop: "14px" },
-                  }}
-                >
-                  Date:
-                </Typography>
-                <Typography
-                  sx={{
-                    fontSize: { mobile: "13px", laptop: "16px" },
-                    fontWeight: "500",
-                    textTransform: "capitalize",
-                  }}
-                >
-                  Tue Jul 18 2023
-                </Typography>
-              </Box>
-              <Divider
-                sx={{
-                  height: "20px",
-                  alignSelf: "center",
-                }}
-                orientation="vertical"
-              />
-              <Box
-                variant="div"
-                sx={{
-                  display: "flex",
-                  flexDirection: {
-                    mobile: "column",
-                    laptop: "row",
-                  },
-                  alignItems: {
-                    mobile: "start",
-                    laptop: "center",
-                  },
-                  gap: {
-                    mobile: "10px",
-                  },
-                }}
-              >
-                <Typography
-                  sx={{
-                    color: "#4A4848",
-                    fontSize: { mobile: "10px", laptop: "14px" },
-                  }}
-                >
-                  Created by:
-                </Typography>
-                <div
-                  style={{
-                    display: "flex",
-                    gap: "10px",
-                    alignItems: "center",
-                  }}
-                >
-                  <Stack direction="row" spacing={2}>
-                    <Avatar
-                      sx={{ width: 25, height: 25 }}
-                      src="/images/adam.png"
-                    />
-                  </Stack>
-                  <Typography
-                    sx={{
-                      color: " #4B4949",
-                      textAlign: "center",
-                      fontSize: "14px",
-                      fontStyle: "normal",
-                      fontWeight: "500",
-                      lineHeight: "130%",
-                    }}
-                    variant="h5"
-                  >
-                    Adam wick
-                  </Typography>
-                </div>
-              </Box>
-            </Box>
-            <Grid
-              container
-              justifyContent="start"
-              columnSpacing={{ mobile: 2, laptop: 4 }}
-              rowSpacing={{ mobile: 2, laptop: 4 }}
-              sx={{
-                mx: "auto",
-              }}
-            >
-              {tableCardValues.map((it, id) => {
-                return (
-                  <Grid onClick={() => setCardId(id)} item key={id}>
-                    <TableCard
-                      it={it}
-                      selected={id === cardId ? true : false}
-                    />
-                  </Grid>
-                );
-              })}
-            </Grid>
-            <PaginationCustom />
-          </Box>
-        </DropDown>
+        <TrackerDetailsDropdown
+          cardId={cardId}
+          isOpen={open.second}
+          setIsOpen={(val) => handleOpen("second", val)}
+          title="Attribute"
+          setCardId={setCardId}
+          carArray={tableCardValues}
+        />
+      </Grid>
+      <Grid item laptop={12} mobile={12}>
+        <TrackerDetailsDropdown
+          cardId={cardId}
+          isOpen={open.third}
+          setIsOpen={(val) => handleOpen("third", val)}
+          setCardId={setCardId}
+          carArray={tableCardValues}
+        />
       </Grid>
       <Grid item laptop={12} mobile={12}>
         <Typography

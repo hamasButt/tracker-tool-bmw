@@ -28,6 +28,7 @@ const MyPagination = styled(Pagination)({
   "& .MuiPagination-ul": {
     justifyContent: "center",
     alignItems: "center",
+    gap:'10px'
   },
 });
 export default function PaginationCustom() {
