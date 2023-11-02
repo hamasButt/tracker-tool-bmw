@@ -1,7 +1,7 @@
 import { Box, Typography } from "@mui/material";
 import React from "react";
 
-const TableCard = ({ selected = true }) => {
+const TableCard = ({ it, selected }) => {
   return (
     <Box
       variant="div"
@@ -9,6 +9,7 @@ const TableCard = ({ selected = true }) => {
         background: selected ? "#0066B1" : "white",
         display: "flex",
         flexDirection: "column",
+        cursor: "pointer",
         gap: {
           laptop: "16px",
           mobile: "5px",
@@ -34,10 +35,10 @@ const TableCard = ({ selected = true }) => {
           fontWeight: "400",
           lineHeight: "normal",
           textTransform: "capitalize",
-          color: "white",
+          color: selected ? "white" : "black",
         }}
       >
-        Serial
+        {it.first}
       </Typography>
       <Typography
         sx={{
@@ -48,10 +49,10 @@ const TableCard = ({ selected = true }) => {
           },
           fontWeight: "700",
           lineHeight: "normal",
-          color: "white",
+          color: selected ? "white" : "black",
         }}
       >
-        HB130
+        {it.second}
       </Typography>
     </Box>
   );

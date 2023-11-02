@@ -23,7 +23,7 @@ body {
     left: 0;
     display: flex;
     flex-direction: column;
-    gap:30px;
+    gap: 30px;
     width: 100%;
     height: 100%;
     background: rgba(0, 0, 0, 0.5);
@@ -46,4 +46,80 @@ body {
     to {
         transform: rotate(360deg);
     }
+}
+
+/* Styles for the tooltip container */
+.tooltip {
+    position: relative;
+}
+
+/* Styles for the arrow */
+.arrow {
+    position: absolute;
+    width: 0;
+    height: 0;
+    border-style: solid;
+}
+
+/* Styles for the arrow positioned at the top */
+.arrowTop {
+    border-color: transparent transparent white transparent;
+    border-bottom-width: 8px;
+    top: -8px;
+}
+
+/* Styles for the arrow positioned at the bottom */
+.arrowBottom {
+    border-color: white transparent transparent transparent;
+    border-top-width: 8px;
+    bottom: -8px;
+}
+
+/* Styles for the arrow positioned on the left */
+.arrowLeft {
+    border-color: transparent white transparent transparent;
+    border-right-width: 4px;
+    left: -8px;
+}
+
+/* Styles for the arrow positioned on the right */
+.arrowRight {
+    border-color: transparent transparent transparent white;
+    border-left-width: 5px;
+    right: 30px;
+    top: 10px;
+}
+
+/* Dropdown.css */
+
+.dropdown {
+    position: relative;
+    z-index: 20;
+    margin-bottom: 10px;
+    width: 100%;
+}
+
+.dropdown-header {
+    padding: 15px;
+    background-color: #F4F4F4;
+    cursor: pointer;
+    user-select: none;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.chevron {
+    transition: transform 0.3s ease;
+}
+
+.chevron.open {
+    transform: rotate(180deg);
+}
+
+.chevron svg {
+    width: 18px;
+    height: 18px;
+    margin-left: 5px;
+    /* Adjust the spacing between title and chevron as needed */
 }

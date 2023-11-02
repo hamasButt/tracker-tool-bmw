@@ -17,8 +17,8 @@ function App() {
             mobile: "20px",
           },
           pb: {
-            laptop: "20px",
-            mobile: "10px",
+            laptop: "80px",
+            mobile: "50px",
           },
           height: {
             laptop: "calc(100vh - 220px)",
