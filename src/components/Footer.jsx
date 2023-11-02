@@ -7,6 +7,7 @@ const Footer = () => {
       component="footer"
       sx={{
         position: "fixed",
+        zIndex:'21',
         bottom: "0",
         bgcolor: "#000",
         width: "100%",

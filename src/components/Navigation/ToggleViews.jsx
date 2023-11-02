@@ -40,6 +40,7 @@ export default function BasicTabs() {
                     navigate("/tracker-tool");
                     return;
                   } else {
+                    navigate("/not-available");
                     return;
                   }
                 }}

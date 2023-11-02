@@ -1,14 +1,17 @@
 import { Typography } from "@mui/material";
 import { useEffect } from "react";
+import { useLocation } from "react-router-dom";
 
 export default function CustomLoader({ children, delay, loader, setLoader }) {
+  const router = useLocation();
+  console.log(router);
   useEffect(() => {
+    if (router.pathname === "/not-available") return;
     setLoader(true);
-
     setTimeout(() => {
       setLoader(false);
     }, delay);
-  }, []);
+  }, [router.pathname]);
   if (loader) {
     return (
       <div className="loader-container">

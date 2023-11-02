@@ -5,6 +5,7 @@ import "./index.css";
 import TrackerTool from "./tracker-tool";
 import { createTheme, ThemeProvider } from "@mui/material";
 import App from "./App";
+import NoPageFound from "./components/ReuseableComps/NoPageFound";
 
 const theme = createTheme({
   breakpoints: {
@@ -28,6 +29,10 @@ const router = createBrowserRouter([
       {
         path: "tracker-tool",
         element: <TrackerTool />,
+      },
+      {
+        path: "not-available",
+        element: <NoPageFound />,
       },
     ],
   },
