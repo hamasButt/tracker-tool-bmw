@@ -2,16 +2,23 @@ import * as React from "react";
 import Tabs from "@mui/material/Tabs";
 import Tab from "@mui/material/Tab";
 import Box from "@mui/material/Box";
-import { useNavigate } from "react-router-dom";
+import { useLocation, useNavigate } from "react-router-dom";
 
 export default function BasicTabs() {
   const [value, setValue] = React.useState(0);
+  const router = useLocation();
 
   const handleChange = (event, newValue) => {
     setValue(newValue);
   };
   const navigate = useNavigate();
 
+  React.useEffect(() => {
+    if (router.pathname === "/tracker-tool") {
+      setValue(6);
+    }
+  }, [router.pathname]);
+  console.log({ value });
   return (
     <Box sx={{ width: "100%", maxWidth: "470px" }}>
       <Box sx={{ borderBottom: 1, borderColor: "#E7E7E7" }}>

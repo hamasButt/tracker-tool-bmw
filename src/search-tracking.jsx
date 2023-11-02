@@ -7,8 +7,10 @@ import {
   styled,
 } from "@mui/material";
 import React from "react";
+import { useNavigate } from "react-router-dom";
 
 const Search = () => {
+  const Navigate = useNavigate();
   const HistoryButton = styled(Button)({
     textTransform: "none",
 
@@ -98,6 +100,7 @@ const Search = () => {
             variant="standard"
           />
           <HistoryButton
+            onClick={() => Navigate("/tracker-tool")}
             sx={{
               padding: {
                 mobile: "12px 24px",
